@@ -1,5 +1,5 @@
 const ProductCarousel = ({ ProductData }: any) => {
-  return <div> ProductCarousel </div>;
+  return <div> {ProductData[0].ProductName} </div>;
 };
 
 export default ProductCarousel;

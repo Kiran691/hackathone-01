@@ -18,6 +18,8 @@ import Expand from "./subComponents/Expand";
 const Navbar = () => {
   const [isNavbarOpen, setNavbarOpen] = useState<boolean>(false);
   const [cartItemNumber, setcartItemNumber] = useState<number>(0);
+const [SearchQuery, setSearchQuery] = useState("")
+
 
   return (
     <div className="sticky top-0 backdrop-blur-lg bg-opacityDownColor z-50">
@@ -52,10 +54,12 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="border flex items-center text-gray-600 px-3 rounded-md">
-            <BiSearch />
+          <div className="border flex items-center bg-white text-gray-600 px-3 rounded-md">
+            <Link href={"/Search/${SearchQuery}"}><BiSearch /></Link>
             <input
               type="text"
+              value={SearchQuery}
+              onChange={(e)=>setSearchQuery(e.target.value)}
               className="focus:outline-none pl-1 pr-5 py-1 w-80  "
               placeholder="Search in Our Store"
             />

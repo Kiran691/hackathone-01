@@ -12,7 +12,7 @@ export interface NavbarItemType{
 export const NavbarArray: Array<NavbarItemType> =[
     {
         label: "Female",
-        href: "/female ",
+        href: "/female/female ",
         isDropDown: true,
         dropDownData:[
             {

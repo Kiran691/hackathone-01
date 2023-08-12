@@ -2,6 +2,7 @@
 import { FC } from "react";
 import { oneProductType } from "@/components/utils/ProductDataArrayAndTypes";
 import Card from "../Card";
+import { isTemplateExpression } from "typescript";
 
 // const ProductCarousel: FC<{ ProductData: Array<oneProductType> }> = ({
 //   ProductData,
@@ -56,7 +57,7 @@ const ProductCarousel: FC<{ ProductData: Array<oneProductType> }> = ({
     isDragging = true;
     initialX = e.touches[0].clientX;
   }
-  let dataToItrate = ProductData.slice(0, 15);
+   let dataToItrate = ProductData.slice(0, 15);
   return (
     <div className="space-y-4">
       <div className="text-center space-y-3">
@@ -73,7 +74,7 @@ const ProductCarousel: FC<{ ProductData: Array<oneProductType> }> = ({
         onTouchEnd={mouseUp}
       >
         {dataToItrate.map((item: oneProductType, index: number) => (
-          <Card key={index + 4} singleProductData={item} />
+          <Card key={index} singleProductData={item} />
         ))}
       </div>
     </div>

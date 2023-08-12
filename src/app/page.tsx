@@ -6,9 +6,9 @@ import { responseType } from "@/components/utils/ProductDataArrayAndTypes";
 import Jewelry from "@/components/views/Jewelry";
 import Newsletter from "@/components/views/NewsLetter";
 
-
 async function fetchAllProductsData() {
   let res = await fetch(`${BASE_PATH_FORAPI}/api/products`);
+  
   if (!res.ok) {
     throw new Error("Failed to fetch");
   }
@@ -16,16 +16,16 @@ async function fetchAllProductsData() {
 }
 
 export default async function Home() {
-  let { response } = await fetchAllProductsData();
+  let  {response } = await fetchAllProductsData();
+
 
   return (
     <div>
-      <Hero />
+       <Hero />
       <ProductsType />
       <ProductCarousel ProductData={response} />
-      <Jewelry />
-      <Newsletter />
-      
+      {/* <Jewelry />
+      <Newsletter />  */}
     </div>
   );
 }

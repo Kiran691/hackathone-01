@@ -14,18 +14,25 @@ import React from "react";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import DropDown from "./subComponents/DropDown";
 import Expand from "./subComponents/Expand";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   const [isNavbarOpen, setNavbarOpen] = useState<boolean>(false);
-  const [cartItemNumber, setcartItemNumber] = useState<number>(0);
-const [SearchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
+  const [cartItemNumber, setCartItemNumber] = useState(0)
 
+  function handleSearchCalledFunc(e: any) {
+    if (e.key === "Enter" && e.keyCode === 13) {
+      router.push(`/search/${searchQuery}`);
+    }
+  }
 
   return (
     <div className="sticky top-0 backdrop-blur-lg bg-opacityDownColor z-50">
       <div className=" py-5 flex justify-between items-center space-x-12">
         <div className="w-36 flex-shrink-0">
-          <Image width={500} height={500} src={"/Logo (1).webp"} alt="Logo" />
+          <Image src={"/Logo.webp"} width={500} height={500} alt="Logo" />
         </div>
         <div className="hidden lg:flex justify-between items-center w-full">
           <ul className="flex space-x-4 font-medium text-lg text-purple-950">
@@ -55,12 +62,15 @@ const [SearchQuery, setSearchQuery] = useState("")
             ))}
           </ul>
           <div className="border flex items-center bg-white text-gray-600 px-3 rounded-md">
-            <Link href={"/Search/${SearchQuery}"}><BiSearch /></Link>
+            <Link href={`/search/${searchQuery}`}>
+              <BiSearch />
+            </Link>
             <input
               type="text"
-              value={SearchQuery}
-              onChange={(e)=>setSearchQuery(e.target.value)}
-              className="focus:outline-none pl-1 pr-5 py-1 w-80  "
+              value={searchQuery}
+              onKeyDown={handleSearchCalledFunc}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="focus:outline-none pl-1 pr-5 py-1 w-80 rounded-r-md"
               placeholder="Search in Our Store"
             />
           </div>

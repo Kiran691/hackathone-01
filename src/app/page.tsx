@@ -23,11 +23,11 @@ export default async function Home() {
 
   return (
     <div>
-      <Hero />
+       <Hero />
       <ProductsType />
       <ProductCarousel ProductData={result} />
       <Jewelry />
-      <Newsletter />
+     <Newsletter /> 
     </div>
   );
 }

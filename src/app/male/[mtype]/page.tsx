@@ -21,7 +21,7 @@ const Male =  async ({params}:{params:{mtype:string}}) => {
 
   
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 content-center justify-center lg:grid-cols-3 gap-4 py-10'>{res.result.map((items:oneProductType, index:number)=>(
+    <div className="grid grid-cols-1 md:grid-cols-2 py-10 lg:grid-cols-3 gap-4">{res.result.map((items:oneProductType, index:number)=>(
       <Card singleProductData={items} key={index}/>
     ))}</div>
   )

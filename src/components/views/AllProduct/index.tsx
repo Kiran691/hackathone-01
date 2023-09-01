@@ -10,7 +10,7 @@ export default async function AllProductsCompo({
   ProductsArray,
 }: propsType) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 content-center justify-center lg:grid-cols-3 gap-4 py-10">
+    <div className="content-center justify-center grid grid-cols-1 md:grid-cols-2 py-10 lg:grid-cols-3 gap-4">
       {ProductsArray &&
         ProductsArray.map((product, index: number) => (
           <Card singleProductData={product} key={index} />

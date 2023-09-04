@@ -7,6 +7,11 @@ import { FC, useState } from "react"
 import { client } from "../../../../sanity/lib/client";
 import { BsCart2 } from "react-icons/bs";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "@/store/slice/cartSlice";
+
+
+
 const builder: any = ImageUrlBuilder(client);
 
 function urlFor(source: any){
@@ -26,6 +31,12 @@ function decrementTheQuantity() {
     setQuantity(quantity - 1)
   }
 }
+
+const dispatch = useDispatch()
+  const addItem = ()=>{
+    dispatch(cartActions.addToCart({quantity:1}))
+  }
+
  return(
   <div className="flex flex-col lg:flex-row justify-center items-center py-7">
     {/* left */}
@@ -81,12 +92,18 @@ function decrementTheQuantity() {
             </div>
           </div>
            <div className="flex gap-x-8 items-center"> 
-            <button  className="flex items-center text-white bg-gray-900 border border-gray-500 px-4 py-2">
+
+
+            <button  
+            onClick={addItem}
+            className="flex items-center text-white bg-gray-900 border border-gray-500 px-4 py-2">
               <BsCart2 />
               &nbsp;
               &nbsp;
               Add to Cart
               </button>
+
+
               <p className="text-2xl font-semibold">${item.price}{".00"}</p>
               
       </div> 

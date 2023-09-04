@@ -3,6 +3,9 @@ import "./globals.css";
 import { Maven_Pro } from "next/font/google";
 import Wrapper from "@/components/shared/Wrapper";
 import Footer from "@/components/views/Footer";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
+import Providers from "@/components/shared/Provider";
 
 const inter = Maven_Pro({
   subsets: ["latin"],
@@ -23,9 +26,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Wrapper>
-          <Navbar /> 
-          <div className="min-h-screen">{children}</div>
-          <Footer />
+          <Providers>
+            <Navbar />
+            <div className="min-h-screen">{children}</div>
+            <Footer />
+          </Providers>
         </Wrapper>
       </body>
     </html>

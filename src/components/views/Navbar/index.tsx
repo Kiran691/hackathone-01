@@ -16,17 +16,26 @@ import DropDown from "./subComponents/DropDown";
 import Expand from "./subComponents/Expand";
 import { useRouter } from "next/navigation";
 
+import { useSelector } from "react-redux"; 
+import { RootState } from "@/store/store";
+
+
 const Navbar = () => {
+
   const router = useRouter();
   const [isNavbarOpen, setNavbarOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [cartItemNumber, setCartItemNumber] = useState(0)
 
   function handleSearchCalledFunc(e: any) {
     if (e.key === "Enter" && e.keyCode === 13) {
       router.push(`/search/${searchQuery}`);
     }
   }
+
+
+  const cartValue = useSelector((state:RootState)=>state.cartSlice.totalQuantity);
+  
+  
 
   return (
     <div className="sticky top-0 backdrop-blur-lg bg-opacityDownColor z-50">
@@ -74,12 +83,16 @@ const Navbar = () => {
               placeholder="Search in Our Store"
             />
           </div>
+
+
           <div className="flex-shrink-0 relative w-11 h-11 bg bg-gray-300 rounded-full flex items-center justify-center">
             <div className="w-4 h-4 absolute top-1 right-2 bg-red-400 text-xs Font-light rounded-full flex justify-center items-center">
-              {cartItemNumber}
+              {cartValue}
             </div>
             <BsCart2 size={24} />
           </div>
+
+
         </div>
         <div
           className="cursor-pointer"

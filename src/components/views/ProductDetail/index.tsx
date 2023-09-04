@@ -6,9 +6,10 @@ import Image from "next/image";
 import { FC, useState } from "react"
 import { client } from "../../../../sanity/lib/client";
 import { BsCart2 } from "react-icons/bs";
-
 import { useDispatch } from "react-redux";
 import { cartActions } from "@/store/slice/cartSlice";
+import toast from 'react-hot-toast';
+
 
 
 
@@ -35,6 +36,7 @@ function decrementTheQuantity() {
 const dispatch = useDispatch()
   const addItem = ()=>{
     dispatch(cartActions.addToCart({quantity:1}))
+    toast.success("Product added")
   }
 
  return(
